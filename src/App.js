@@ -1,24 +1,43 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MenuAppBar from './MenuAppBar';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Home from './Home';
+import About from './About';
+import User from './User';
+import NoMatch from './NoMatch';
+import { Container } from "@material-ui/core";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+          <MenuAppBar />
+        <Switch>
+          <div>
+            
+          <Container maxWidth="sm" >
+
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/home">
+            <Home />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/user">
+              <User />
+            </Route>
+            {/* <Route>
+              <NoMatch />
+            </Route> */}
+          </Container>
+          </div>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
